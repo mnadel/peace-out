@@ -1,0 +1,21 @@
+{
+    "name": "Peace Out",
+    "description": "Peace Out, Google Meet People",
+    "version": "0.1",
+    "manifest_version": 3,
+    "icons": {
+        "16": "peace16.png",
+        "48": "peace48.png",
+        "128": "peace128.png"
+    },
+    "action": {},
+    "permissions": [
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://meet.google.com/*"
+    ],
+    "background": {
+        "service_worker": "worker.js"
+    }
+}
