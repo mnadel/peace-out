@@ -1,6 +1,14 @@
 function peaceOut() {
     console.log("[peaceout] Sayonara.");
 
+    createClickEvent = () => {
+        return new MouseEvent("click", {
+            "view": window,
+            "bubbles": true,
+            "cancelable": false
+        });
+    };
+
     endCall = () => {
         console.log("[peaceout] Looking for the 'Leave call' button.");
 
@@ -8,16 +16,8 @@ function peaceOut() {
         for (var i = 0; i < buttons.length; i++) {
             var label = buttons[i].attributes["aria-label"];
             if (label && label.value == "Leave call") {
-                var clickEvent = new MouseEvent("click", {
-                    "view": window,
-                    "bubbles": true,
-                    "cancelable": false
-                });
-
                 console.log("[peaceout] Leaving.");
-
-                buttons[i].dispatchEvent(clickEvent);
-
+                buttons[i].dispatchEvent(createClickEvent());
                 break;
             }
         }
@@ -29,16 +29,8 @@ function peaceOut() {
         var spans = document.getElementsByTagName("span");
         for (var i = 0; i < spans.length; i++) {
             if (spans[i].innerHTML == "Just leave the call") {
-                var clickEvent = new MouseEvent("click", {
-                    "view": window,
-                    "bubbles": true,
-                    "cancelable": false
-                });
-
                 console.log("[peaceout] Goodbye.");
-
-                spans[i].dispatchEvent(clickEvent);
-
+                spans[i].dispatchEvent(createClickEvent());
                 break;
             }
         }
