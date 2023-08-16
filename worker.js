@@ -1,5 +1,7 @@
 function peaceOut() {
-    console.log("[peaceout] Sayonara.");
+    log = (msg) => {
+        console.log(`[peaceout] ${msg}`);
+    };
 
     createClickEvent = () => {
         return new MouseEvent("click", {
@@ -10,14 +12,14 @@ function peaceOut() {
     };
 
     endCall = () => {
-        console.log("[peaceout] Looking for the 'Leave call' button.");
+        log("Looking for the 'Leave call' button.");
 
         var found = false;
         var buttons = document.getElementsByTagName("button");
         for (var i = 0; i < buttons.length; i++) {
             var label = buttons[i].attributes["aria-label"];
             if (label && label.value == "Leave call") {
-                console.log("[peaceout] Leaving.");
+                log("Leaving.");
                 buttons[i].dispatchEvent(createClickEvent());
                 found = true;
                 break;
@@ -25,18 +27,18 @@ function peaceOut() {
         }
 
         if (!found) {
-            console.log("Cannot find the 'Leave call' button.");
+            log("Cannot find the 'Leave call' button.");
         }
     };
 
     justLeave = () => {
-        console.log("[peaceout] Looking for the 'Just leave the call' button.");
+        log("Looking for the 'Just leave the call' button.");
 
         var found = false;
         var spans = document.getElementsByTagName("span");
         for (var i = 0; i < spans.length; i++) {
             if (spans[i].innerHTML == "Just leave the call") {
-                console.log("[peaceout] Goodbye.");
+                log("Goodbye.");
                 spans[i].dispatchEvent(createClickEvent());
                 found = true;
                 break;
@@ -44,7 +46,7 @@ function peaceOut() {
         }
 
         if (!found) {
-            console.log("Cannot find the 'Just leave the call' button.");
+            log("Cannot find the 'Just leave the call' button.");
         }
     };
 
