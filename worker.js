@@ -67,7 +67,7 @@ chrome.action.onClicked.addListener((tab) => {
             function: peaceOut
         });
     } else {
-        log("This extension only works on Google Meet pages.");
+        console.log("This extension only works on Google Meet pages.");
     }
 });
 
