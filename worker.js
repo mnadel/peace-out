@@ -1,6 +1,10 @@
 function peaceOut() {
-    log = (msg) => {
+    log = (msg, fatal = false) => {
         console.log(`[peaceout] ${msg}`);
+
+        if (fatal) {
+            alert(msg);
+        }
     };
 
     createClickEvent = () => {
@@ -27,7 +31,7 @@ function peaceOut() {
         }
 
         if (!found) {
-            log("Cannot find the 'Leave call' button.");
+            log("Cannot find the 'Leave call' button.", true);
         }
     };
 
@@ -46,12 +50,12 @@ function peaceOut() {
         }
 
         if (!found) {
-            log("Cannot find the 'Just leave the call' button.");
+            log("Cannot find the 'Just leave the call' button.", true);
         }
     };
 
     endCall();
-    setTimeout(justLeave, 1000);
+    setTimeout(justLeave, 750);
 }
 
 chrome.action.onClicked.addListener((tab) => {
@@ -62,5 +66,8 @@ chrome.action.onClicked.addListener((tab) => {
             target: { tabId: tab.id },
             function: peaceOut
         });
+    } else {
+        log("This extension only works on Google Meet pages.");
     }
 });
+
