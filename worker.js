@@ -16,7 +16,7 @@ function peaceOut() {
     };
 
     endCall = () => {
-        log("Looking for the hangup button.");
+        log("Looking for the 'Leave call' button.");
 
         var found = false;
         var buttons = document.getElementsByTagName("button");
@@ -31,7 +31,7 @@ function peaceOut() {
         }
 
         if (!found) {
-            log("Cannot find the hangup button.", true);
+            log("Cannot find the 'Leave call' button.", true);
         }
     };
 
@@ -55,11 +55,10 @@ function peaceOut() {
     };
 
     endCall();
-    setTimeout(justLeave, 750);
+    setTimeout(justLeave, 667);
 }
 
 chrome.action.onClicked.addListener((tab) => {
-    
     console.log("[peaceout] Got the click.");
 
     if (tab && tab.url && tab.url.startsWith("https://meet.google.com/")) {
