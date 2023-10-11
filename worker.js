@@ -31,8 +31,12 @@ function peaceOut() {
         }
 
         if (!found) {
-            log("Cannot find the 'Leave call' button.", true);
+            log("Cannot find the 'Leave call' button.", !alreadyLeft());
         }
+    };
+
+    alreadyLeft = () => {
+        return document.body.innerText.includes("You left the meeting");
     };
 
     justLeave = () => {
@@ -50,7 +54,7 @@ function peaceOut() {
         }
 
         if (!found) {
-            log("Cannot find the 'Just leave the call' button.", true);
+            log("Cannot find the 'Just leave the call' button.", !alreadyLeft());
         }
     };
 
